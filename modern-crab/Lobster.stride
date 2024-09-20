@@ -56,11 +56,23 @@
             <throws/>
             <body>
                 <variable type="Actor" type-java="Actor" name="Crab" value="getOneIntersectingObject(Crab.class)" value-java="getOneIntersectingObject(Crab.class)" enable="true"/>
+                <variable type="Actor" type-java="Actor" name="worm" value="getOneIntersectingObject(Worm.class)" value-java="getOneIntersectingObject(Worm.class)" enable="true"/>
                 <if condition="Crab!=null" condition-java="Crab != null" enable="true">
                     <ifStatements>
                         <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
                         <call expression="world.removeObject(Crab)" expression-java="world.removeObject(Crab)" enable="true"/>
                         <call expression="Greenfoot.playSound(&quot;horror.wav&quot;)" expression-java="Greenfoot.playSound(&quot;horror.wav&quot;)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="worm!=null" condition-java="worm != null" enable="true">
+                    <ifStatements>
+                        <variable type="World" type-java="World" name="world" value="getWorld()" value-java="getWorld()" enable="true"/>
+                        <variable type="int" type-java="int" name="xLocation" value="worm.getX()" value-java="worm.getX()" enable="true"/>
+                        <variable type="int" type-java="int" name="yLocation" value="worm.getY()" value-java="worm.getY()" enable="true"/>
+                        <variable type="Lobster" type-java="Lobster" name="lobster" value="new Lobster()" value-java=" new Lobster()" enable="true"/>
+                        <call expression="world.removeObject(worm)" expression-java="world.removeObject(worm)" enable="true"/>
+                        <call expression="world.addObject(lobster,xLocation,yLocation)" expression-java="world.addObject(lobster, xLocation, yLocation)" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;evilLaugh.wav&quot;)" expression-java="Greenfoot.playSound(&quot;evilLaugh.wav&quot;)" enable="true"/>
                     </ifStatements>
                 </if>
             </body>

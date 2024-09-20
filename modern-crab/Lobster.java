@@ -49,10 +49,20 @@ public class Lobster extends Actor
     public void kill()
     {
         Actor Crab = getOneIntersectingObject(Crab.class);
+        Actor worm = getOneIntersectingObject(Worm.class);
         if (Crab != null) {
             World world = getWorld();
             world.removeObject(Crab);
             Greenfoot.playSound("horror.wav");
+        }
+        if (worm != null) {
+            World world = getWorld();
+            int xLocation = worm.getX();
+            int yLocation = worm.getY();
+            Lobster lobster =  new Lobster();
+            world.removeObject(worm);
+            world.addObject(lobster, xLocation, yLocation);
+            Greenfoot.playSound("evilLaugh.wav");
         }
     }
 
